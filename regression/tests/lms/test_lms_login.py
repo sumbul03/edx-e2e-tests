@@ -29,7 +29,7 @@ class LoginTest(WebAppTest):
         Verifies that user can Log in as a staff
         """
         self.login_page.visit()
-        self.login_page.login(self.DEMO_COURSE_USER, self.DEMO_COURSE_PASSWORD)
+        self.login_page.login(self.'xyz', self.'ecs')
         self.assertEqual(
             self.login_page.q(
                 css='.kt-portlet__head').text[0].lower(),
