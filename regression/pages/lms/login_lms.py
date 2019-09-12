@@ -33,7 +33,7 @@ class LmsLogin(LoginPage):
             password_selector, 'Password input are present')
 
         self.q(css=email_selector).fill(email)
-        self.q(css=password_selector).fill(password)
+        self.q(css=password_selector).fill('demo')
         self.wait_for_ajax()
 
     def submit(self):
