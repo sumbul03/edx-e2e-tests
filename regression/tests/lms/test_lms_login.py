@@ -12,9 +12,11 @@ class LoginTest(WebAppTest):
     """
     Tests for logging in and navigating to Courseware page
     """
-
-    DEMO_COURSE_USER = os.environ.get('USER_LOGIN_EMAIL')
-    DEMO_COURSE_PASSWORD = os.environ.get('USER_LOGIN_PASSWORD')
+   
+    USERs_LOGIN_EMAIL = 'staff@example.com'
+    USERs_LOGIN_PASSWORD = 'edx'
+    DEMO_COURSE_USER = os.environ.get('USERs_LOGIN_EMAIL')
+    DEMO_COURSE_PASSWORD = os.environ.get('USERs_LOGIN_PASSWORD')
 
     def setUp(self):
         """
@@ -29,7 +31,7 @@ class LoginTest(WebAppTest):
         Verifies that user can Log in as a staff
         """
         self.login_page.visit()
-        self.login_page.login(self.'xyz', self.'ecs')
+        self.login_page.login(self.USERs_LOGIN_EMAIL, self.USERs_LOGIN_PASSWORD)
         self.assertEqual(
             self.login_page.q(
                 css='.kt-portlet__head').text[0].lower(),
