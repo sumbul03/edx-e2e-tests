@@ -15,13 +15,11 @@ class LoginTest(WebAppTest):
     """
 
     print(os.environ.get('USER_LOGIN_EMAIL'))
-    USER_LOGIN_EMAIL = 'staff@example.com'
-    USER_LOGIN_PASSWORD = 'edx'
-    
-    DEMO_COURSE_USER = os.environ.get('USER_LOGIN_EMAIL')
-    DEMO_COURSE_PASSWORD = os.environ.get('USER_LOGIN_PASSWORD')
-    
-
+    #USER_LOGIN_EMAIL = 'staff@example.com'
+    #USER_LOGIN_PASSWORD = 'edx'
+    DEMO_COURSE_USER ="staff@example.com"
+    DEMO_COURSE_PASSWORD = "edx"
+  
     def setUp(self):
         """
         Initialize the page object
