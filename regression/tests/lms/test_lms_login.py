@@ -1,6 +1,7 @@
 """
 End to end tests for LMS Login
 """
+import webbrowser
 import os
 from bok_choy.web_app_test import WebAppTest
 from regression.pages.lms.login_lms import LmsLogin
@@ -23,7 +24,8 @@ class LoginTest(WebAppTest):
         Initialize the page object
         """
         super(LoginTest, self).setUp()
-        self.login_page = LmsLogin(self.browser)
+        #self.login_page = LmsLogin(self.browser)
+        self.login_page = 'http://localhost:18000/login'
         print(self.login_page)
         self.dashboard_ext = DashboardPageExtended(self.browser)
 
@@ -32,8 +34,9 @@ class LoginTest(WebAppTest):
         Verifies that user can Log in as a staff
         """
         #self.login_page.visit()
-        os.system("xdg-open \"\" http://localhost:18000/login")
-        self.login_page.login(self.DEMO_COURSE_USER, self.DEMO_COURSE_PASSWORD)
+        #os.system("xdg-open \"\" http://localhost:18000/login")
+        webbrowser.open('http://localhost:18000/login')
+        self.login_page.login(USERs_LOGIN_EMAIL, USERs_LOGIN_PASSWORD)
         self.assertEqual(
             self.login_page.q(
                 css='.kt-portlet__head').text[0].lower(),
