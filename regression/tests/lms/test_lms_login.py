@@ -33,7 +33,7 @@ class LoginTest(WebAppTest):
         """
         #self.login_page.visit()
         os.system("xdg-open \"\" http://localhost:18000/login")
-        self.login_page.login('staff@example.com' , 'edx')
+        self.login_page.login(self.DEMO_COURSE_USER, self.DEMO_COURSE_PASSWORD)
         self.assertEqual(
             self.login_page.q(
                 css='.kt-portlet__head').text[0].lower(),
