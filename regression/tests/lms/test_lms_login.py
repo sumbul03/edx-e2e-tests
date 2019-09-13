@@ -15,22 +15,28 @@ class LoginTest(WebAppTest):
    
     USERs_LOGIN_EMAIL = 'staff@example.com'
     USERs_LOGIN_PASSWORD = 'edx'
-    DEMO_COURSE_USER = os.environ.get('USERs_LOGIN_EMAIL')
-    DEMO_COURSE_PASSWORD = os.environ.get('USERs_LOGIN_PASSWORD')
+    #DEMO_COURSE_USER = os.environ.get('USERs_LOGIN_EMAIL')
+    #DEMO_COURSE_PASSWORD = os.environ.get('USERs_LOGIN_PASSWORD')
+    LOG_URL = 'http://localhost:18000/login' 
+    LOG_DASH = 'http://localhost:18000/dashboard' 
 
     def setUp(self):
         """
         Initialize the page object
         """
         super(LoginTest, self).setUp()
-        self.login_page = LmsLogin(self.browser)
-        self.dashboard_ext = DashboardPageExtended(self.browser)
+        echo 'TESTING'
+        self.login_page = LmsLogin(self.LOG_URL)
+        echo self.login_page
+        self.dashboard_ext = DashboardPageExtended(self.LOG_DASH)
+        echo self.dashboard_ext
 
     def test_login(self):
         """
         Verifies that user can Log in as a staff
         """
         self.login_page.visit()
+        echo self.login_page
         self.login_page.login(USERs_LOGIN_EMAIL , USERs_LOGIN_PASSWORD)
         self.assertEqual(
             self.login_page.q(
