@@ -1,7 +1,6 @@
 """
 End to end tests for LMS Login
 """
-import urllib.request
 import os
 from bok_choy.web_app_test import WebAppTest
 from regression.pages.lms.login_lms import LmsLogin
@@ -13,41 +12,35 @@ class LoginTest(WebAppTest):
     """
     Tests for logging in and navigating to Courseware page
     """
-   
+
+    DEMO_COURSE_USER = os.environ.get('USER_LOGIN_EMAIL')
+    DEMO_COURSE_PASSWORD = os.environ.get('USER_LOGIN_PASSWORD')
     USERs_LOGIN_EMAIL = 'staff@example.com'
-    USERs_LOGIN_PASSWORD = 'edx'
-    DEMO_COURSE_USER = os.environ.get('USERs_LOGIN_EMAIL')
-    DEMO_COURSE_PASSWORD = os.environ.get('USERs_LOGIN_PASSWORD')
-    
+    USERs_LOGIN_PASSWORD = 'edx
 
     def setUp(self):
         """
         Initialize the page object
         """
         super(LoginTest, self).setUp()
-        print("TESTING")
-        #self.login_page = LmsLogin(self.browser)
-        self.login_page = 'http://localhost:18000/login'
+        self.login_page = LmsLogin(self.browser)
         print(self.login_page)
-        #self.dashboard_ext = DashboardPageExtended(self.browser)
-        self.dashboard_ext = 'http://localhost:18000/dashboard'
-        print(self.dashboard_ext)
+        self.dashboard_ext = DashboardPageExtended(self.browser)
 
     def test_login(self):
         """
         Verifies that user can Log in as a staff
         """
-        print(self.login_page)
-        #self.login_page.visit() 
-        urllib.request.urlopen("http://localhost:18000/login")
+        #self.login_page.visit()
+        os.system("xdg-open \"\" http://localhost:18000/login")
         self.login_page.login(USERs_LOGIN_EMAIL , USERs_LOGIN_PASSWORD)
         self.assertEqual(
             self.login_page.q(
-                css='.kt-portlet__head').text[0].lower(),
+                css='.wrapper-header-courses .header-courses').text[0].lower(),
             'my courses',
             msg='User not logged in as expected.')
 
-    def atest_remember_me(self):
+    def test_remember_me(self):
         """
         Verifies that user can use Remember Me functionality
         """
