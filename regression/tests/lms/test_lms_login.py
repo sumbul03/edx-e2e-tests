@@ -18,8 +18,6 @@ class LoginTest(WebAppTest):
     USERs_LOGIN_EMAIL = 'staff@example.com'
     USERs_LOGIN_PASSWORD = 'edx'
     
-    print(USER_LOGIN_EMAIL)
-
     def setUp(self):
         """
         Initialize the page object
