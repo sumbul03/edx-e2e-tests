@@ -31,7 +31,7 @@ class LoginTest(WebAppTest):
         Verifies that user can Log in as a staff
         """
         self.login_page.visit()
-        self.login_page.login(self.USERs_LOGIN_EMAIL, self.USERs_LOGIN_PASSWORD)
+        self.login_page.login(USERs_LOGIN_EMAIL , USERs_LOGIN_PASSWORD)
         self.assertEqual(
             self.login_page.q(
                 css='.kt-portlet__head').text[0].lower(),
