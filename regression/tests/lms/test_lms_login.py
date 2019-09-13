@@ -17,6 +17,8 @@ class LoginTest(WebAppTest):
     DEMO_COURSE_PASSWORD = os.environ.get('USER_LOGIN_PASSWORD')
     USERs_LOGIN_EMAIL = 'staff@example.com'
     USERs_LOGIN_PASSWORD = 'edx'
+    
+    print(USER_LOGIN_EMAIL)
 
     def setUp(self):
         """
@@ -33,7 +35,7 @@ class LoginTest(WebAppTest):
         """
         #self.login_page.visit()
         os.system("xdg-open \"\" http://localhost:18000/login")
-        self.login_page.login(USERs_LOGIN_EMAIL , USERs_LOGIN_PASSWORD)
+        self.login_page.login('staff@example.com' , 'edx')
         self.assertEqual(
             self.login_page.q(
                 css='.kt-portlet__head').text[0].lower(),
