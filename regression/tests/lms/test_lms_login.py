@@ -25,18 +25,18 @@ class LoginTest(WebAppTest):
         Initialize the page object
         """
         super(LoginTest, self).setUp()
-        echo 'TESTING'
+        print("TESTING")
         self.login_page = LmsLogin(self.LOG_URL)
-        echo self.login_page
+        print(self.login_page)
         self.dashboard_ext = DashboardPageExtended(self.LOG_DASH)
-        echo self.dashboard_ext
+        print(self.dashboard_ext)
 
     def test_login(self):
         """
         Verifies that user can Log in as a staff
         """
         self.login_page.visit()
-        echo self.login_page
+        print(self.login_page)
         self.login_page.login(USERs_LOGIN_EMAIL , USERs_LOGIN_PASSWORD)
         self.assertEqual(
             self.login_page.q(
