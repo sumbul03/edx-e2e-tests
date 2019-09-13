@@ -17,8 +17,8 @@ class LoginTest(WebAppTest):
     print(os.environ.get('USER_LOGIN_EMAIL'))
     #USER_LOGIN_EMAIL = 'staff@example.com'
     #USER_LOGIN_PASSWORD = 'edx'
-    DEMO_COURSE_USER ="staff@example.com"
-    DEMO_COURSE_PASSWORD = "edx"
+    DEMO_COURSE_USER ="staff@edx.com"
+    DEMO_COURSE_PASSWORD = "edxapp"
   
     def setUp(self):
         """
