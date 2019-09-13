@@ -1,13 +1,13 @@
 """
 End to end tests for LMS Login
 """
-import webbrowser
+#import webbrowser
 import os
 from bok_choy.web_app_test import WebAppTest
 from regression.pages.lms.login_lms import LmsLogin
 from regression.pages.lms.dashboard_lms import DashboardPageExtended
 from regression.pages.lms import LMS_BASE_URL, LMS_STAGE_BASE_URL
-
+from twill.commands import *
 
 class LoginTest(WebAppTest):
     """
@@ -24,8 +24,8 @@ class LoginTest(WebAppTest):
         Initialize the page object
         """
         super(LoginTest, self).setUp()
-        #self.login_page = LmsLogin(self.browser)
-        self.login_page = 'http://localhost:18000/login'
+        self.login_page = LmsLogin(self.browser)
+        #self.login_page = 'http://localhost:18000/login'
         print(self.login_page)
         self.dashboard_ext = DashboardPageExtended(self.browser)
 
@@ -35,8 +35,11 @@ class LoginTest(WebAppTest):
         """
         #self.login_page.visit()
         #os.system("xdg-open \"\" http://localhost:18000/login")
-        webbrowser.open('http://localhost:18000/login')
-        self.login_page.login(USERs_LOGIN_EMAIL, USERs_LOGIN_PASSWORD)
+        #webbrowser.open('http://localhost:18000/login')
+        go('http://localhost:18000/login')
+        fv("1", "email", "staff@example.com")
+        fv("1", "password", "edx")
+        #self.login_page.login(USERs_LOGIN_EMAIL, USERs_LOGIN_PASSWORD)
         self.assertEqual(
             self.login_page.q(
                 css='.kt-portlet__head').text[0].lower(),
