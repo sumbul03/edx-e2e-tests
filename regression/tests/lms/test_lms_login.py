@@ -2,6 +2,7 @@
 End to end tests for LMS Login
 """
 import os
+import time
 from bok_choy.web_app_test import WebAppTest
 from regression.pages.lms.login_lms import LmsLogin
 from regression.pages.lms.dashboard_lms import DashboardPageExtended
@@ -34,6 +35,7 @@ class LoginTest(WebAppTest):
         Verifies that user can Log in as a staff
         """
         self.login_page.visit()
+        time.sleep(60)
         self.login_page.login(self.DEMO_COURSE_USER, self.DEMO_COURSE_PASSWORD)
         self.assertEqual(
             self.login_page.q(
