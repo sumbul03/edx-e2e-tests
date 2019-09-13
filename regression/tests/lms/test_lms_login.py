@@ -1,45 +1,40 @@
 """
 End to end tests for LMS Login
 """
-#import webbrowser
 import os
 from bok_choy.web_app_test import WebAppTest
 from regression.pages.lms.login_lms import LmsLogin
 from regression.pages.lms.dashboard_lms import DashboardPageExtended
 from regression.pages.lms import LMS_BASE_URL, LMS_STAGE_BASE_URL
-from twill.commands import *
+
 
 class LoginTest(WebAppTest):
     """
     Tests for logging in and navigating to Courseware page
     """
 
+    print(os.environ.get('USER_LOGIN_EMAIL'))
+    USER_LOGIN_EMAIL = 'staff@example.com'
+    USER_LOGIN_PASSWORD = 'edx'
+    
     DEMO_COURSE_USER = os.environ.get('USER_LOGIN_EMAIL')
     DEMO_COURSE_PASSWORD = os.environ.get('USER_LOGIN_PASSWORD')
-    USERs_LOGIN_EMAIL = 'staff@example.com'
-    USERs_LOGIN_PASSWORD = 'edx'
     
+
     def setUp(self):
         """
         Initialize the page object
         """
         super(LoginTest, self).setUp()
         self.login_page = LmsLogin(self.browser)
-        #self.login_page = 'http://localhost:18000/login'
-        print(self.login_page)
         self.dashboard_ext = DashboardPageExtended(self.browser)
 
     def test_login(self):
         """
         Verifies that user can Log in as a staff
         """
-        #self.login_page.visit()
-        #os.system("xdg-open \"\" http://localhost:18000/login")
-        #webbrowser.open('http://localhost:18000/login')
-        go('http://localhost:18000/login')
-        fv("1", "email", "staff@example.com")
-        fv("1", "password", "edx")
-        #self.login_page.login(USERs_LOGIN_EMAIL, USERs_LOGIN_PASSWORD)
+        self.login_page.visit()
+        self.login_page.login(self.DEMO_COURSE_USER, self.DEMO_COURSE_PASSWORD)
         self.assertEqual(
             self.login_page.q(
                 css='.kt-portlet__head').text[0].lower(),
@@ -70,3 +65,5 @@ class LoginTest(WebAppTest):
         # then the value of 'expiry' key of cookie will
         # be none.
         self.assertIsNotNone(self.browser.get_cookie(cookie_name)['expiry'])
+
+   
