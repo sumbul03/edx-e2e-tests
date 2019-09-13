@@ -1,7 +1,7 @@
 """
 End to end tests for LMS Login
 """
-import urllib2
+import urllib.request
 import os
 from bok_choy.web_app_test import WebAppTest
 from regression.pages.lms.login_lms import LmsLogin
@@ -39,7 +39,7 @@ class LoginTest(WebAppTest):
         """
         print(self.login_page)
         #self.login_page.visit() 
-        urllib2.urlopen("http://localhost:18000/login")
+        urllib.request.urlopen("http://localhost:18000/login")
         self.login_page.login(USERs_LOGIN_EMAIL , USERs_LOGIN_PASSWORD)
         self.assertEqual(
             self.login_page.q(
