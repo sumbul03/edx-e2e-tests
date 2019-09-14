@@ -11,7 +11,7 @@ class LmsLogin(LoginPage):
     This class is an extended class of LoginPage,
     where we add methods that are different or not used in LoginPage
     """
-    url = "http://localhost:18000/login"
+    url = "edx.devstack.lms:18000/login"
 
     def is_browser_on_page(self):
         """
