@@ -2,7 +2,6 @@
 End to end tests for LMS Login
 """
 import os
-import time
 from bok_choy.web_app_test import WebAppTest
 from regression.pages.lms.login_lms import LmsLogin
 from regression.pages.lms.dashboard_lms import DashboardPageExtended
@@ -14,12 +13,11 @@ class LoginTest(WebAppTest):
     Tests for logging in and navigating to Courseware page
     """
 
-    print(os.environ.get('USER_LOGIN_EMAIL'))
-    #USER_LOGIN_EMAIL = 'staff@example.com'
-    #USER_LOGIN_PASSWORD = 'edx'
-    DEMO_COURSE_USER ="staff@edx.com"
-    DEMO_COURSE_PASSWORD = "edxapp"
-  
+    #DEMO_COURSE_USER = os.environ.get('USER_LOGIN_EMAIL')
+    #DEMO_COURSE_PASSWORD = os.environ.get('USER_LOGIN_PASSWORD')
+    DEMO_COURSE_USER = "staff@example.com"
+    DEMO_COURSE_PASSWORD = "edx"
+
     def setUp(self):
         """
         Initialize the page object
@@ -33,12 +31,11 @@ class LoginTest(WebAppTest):
         Verifies that user can Log in as a staff
         """
         self.login_page.visit()
-        self.login_page.wait_for_page(self, timeout=300)
         self.login_page.login(self.DEMO_COURSE_USER, self.DEMO_COURSE_PASSWORD)
         self.assertEqual(
             self.login_page.q(
-                css='.kt-portlet__head').text[0].lower(),
-            'my courses',
+                css='#showAccomplishedCourses').text[0].lower(),
+            'completed',
             msg='User not logged in as expected.')
 
     def atest_remember_me(self):
@@ -65,5 +62,3 @@ class LoginTest(WebAppTest):
         # then the value of 'expiry' key of cookie will
         # be none.
         self.assertIsNotNone(self.browser.get_cookie(cookie_name)['expiry'])
-
-   
