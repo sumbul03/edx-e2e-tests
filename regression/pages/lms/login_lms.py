@@ -11,22 +11,21 @@ class LmsLogin(LoginPage):
     This class is an extended class of LoginPage,
     where we add methods that are different or not used in LoginPage
     """
-    #url = LOGIN_BASE_URL + '/login'
     url = 'http://edx.devstack.lms:18000' + '/login'
 
     def is_browser_on_page(self):
         """
         Verifies if the browser is on the correct page
         """
-        return self.q(css='.login-button').visible
+        return self.q(css='.js-login.login-button').visible
 
     def provide_info(self, email, password):
         """
         Fill in login info
         'Username' and 'Password' are the user's credentials
         """
-        email_selector = 'input#email'
-        password_selector = 'input#password'
+        email_selector = 'input#login-email'
+        password_selector = 'input#login-password'
 
         self.wait_for_element_visibility(
             email_selector, 'Email input area present')
@@ -52,6 +51,6 @@ class LmsLogin(LoginPage):
         """
         Clicks Remember Me checkbox
         """
-        self.q(css='#remember-yes').click()
+        self.q(css='#login-remember').click()
         # Click initiates an ajax call
         self.wait_for_ajax()
