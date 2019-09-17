@@ -46,8 +46,9 @@ class LmsLogin(LoginPage):
 
         # The next page is the dashboard; make sure it loads
         dashboard = DashboardPage(self.browser)
-        dashboard.wait_for_page()
         time.sleep(30)
+        dashboard.wait_for_page()
+        
         return dashboard
 
     def click_remember_me(self):
