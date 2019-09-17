@@ -36,8 +36,8 @@ class LoginTest(WebAppTest):
         self.login_page.login(self.DEMO_COURSE_USER, self.DEMO_COURSE_PASSWORD)
         self.assertEqual(
             self.login_page.q(
-                css='#showAccomplishedCourses').text[0].lower(),
-            'completed',
+                css='#showAllCourses').text[0].lower(),
+            'all',
             msg='User not logged in as expected.')
 
     def atest_remember_me(self):
