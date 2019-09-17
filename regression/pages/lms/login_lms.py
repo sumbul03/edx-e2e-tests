@@ -45,11 +45,11 @@ class LmsLogin(LoginPage):
         self.q(css='.login-button').first.click()
 
         # The next page is the dashboard; make sure it loads
-        dashboard = DashboardPage(self.browser)
-        time.sleep(30)
-        dashboard.wait_for_page()
-        
-        return dashboard
+        #dashboard = DashboardPage(self.browser)
+        time.sleep(45)
+        #dashboard.wait_for_page()
+        return self.q(css='#showAccomplishedCourses').visible
+        #return dashboard
 
     def click_remember_me(self):
         """
