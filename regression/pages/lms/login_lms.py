@@ -4,6 +4,7 @@ LMS login page
 from edxapp_acceptance.pages.lms.login import LoginPage
 from edxapp_acceptance.pages.lms.dashboard import DashboardPage
 from regression.pages.lms import LOGIN_BASE_URL
+import time
 
 
 class LmsLogin(LoginPage):
@@ -26,7 +27,8 @@ class LmsLogin(LoginPage):
         """
         email_selector = 'input#login-email'
         password_selector = 'input#login-password'
-
+        
+        time.sleep(30)
         self.wait_for_element_visibility(
             email_selector, 'Email input area present')
         self.wait_for_element_visibility(
@@ -45,6 +47,7 @@ class LmsLogin(LoginPage):
         # The next page is the dashboard; make sure it loads
         dashboard = DashboardPage(self.browser)
         dashboard.wait_for_page()
+        time.sleep(30)
         return dashboard
 
     def click_remember_me(self):
