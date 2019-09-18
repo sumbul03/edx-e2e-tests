@@ -46,8 +46,8 @@ class LmsLogin(LoginPage):
 
         # The next page is the dashboard; make sure it loads
         dashboard = DashboardPage(self.browser)
-        time.sleep(45)
-        dashboard.wait_for_page(30)
+        #time.sleep(45)
+        dashboard.wait_for_page(90)
         #return self.q(css='.my-courses').present
         return dashboard
 
