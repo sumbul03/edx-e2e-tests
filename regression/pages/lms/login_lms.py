@@ -44,13 +44,18 @@ class LmsLogin(LoginPage):
         Submit registration info to create an account.
         """
         self.q(css='.js-login.login-button').first.click()
+        time.sleep(60)
+        self.q(css='.js-login.login-button').first.click()
+        time.sleep(60)
+        dashtest1=self.q(css='.js-login.login-button').visible
+        print(dashtest1)
+        self.q(css='.js-login.login-button').first.click()
 
         # The next page is the dashboard; make sure it loads
-        dashboard = DashboardPageExtended(self.browser)
+        #dashboard = DashboardPageExtended(self.browser)
         #time.sleep(60)
-        dashboard.wait_for_page(90)
-        dashtest = self.q(css='.my-courses').visible       
-        print ("Dashtest is" + str(dashtest))
+        #dashboard.wait_for_page(90)
+        
         return "http://edx.devstack.lms:18000/dashboard"
         #return dashboard
 
