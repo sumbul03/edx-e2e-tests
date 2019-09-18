@@ -36,11 +36,11 @@ class LoginTest(WebAppTest):
         self.login_page.login(self.DEMO_COURSE_USER, self.DEMO_COURSE_PASSWORD)
         time.sleep(45)
         all_co = self.login_page.q(
-                css='#my-courses').present
+                css='.js-login.login-button').present
         print(all_co)
 
         self.assertEqual(
-            all_co,True,
+            all_co,False,
             msg='User not logged in as expected.') 
         
     def atest_remember_me(self):
