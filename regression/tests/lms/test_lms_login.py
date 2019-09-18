@@ -37,7 +37,7 @@ class LoginTest(WebAppTest):
         all_courses=self.login_page.q(css='#showAllCourses')
         first_course=all_courses.text[0]
         self.assertEqual(
-            self.login_page.q(
+            
                 first_course.lower(),
             'all',            
             msg='User not logged in as expected.')
