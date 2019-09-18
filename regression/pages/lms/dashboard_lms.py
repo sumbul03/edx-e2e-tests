@@ -11,7 +11,7 @@ class DashboardPageExtended(DashboardPage):
     This class is an extended class of Dashboard Page,
     where we add methods that are different or not used in DashboardPage
     """
-    url = 'http://edx.devstack.lms:18000/dashboard'
+    url = 'edx.devstack.lms:18000/dashboard'
 
     def select_course(self, course_title):
         """
