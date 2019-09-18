@@ -14,10 +14,10 @@ class LoginTest(WebAppTest):
     Tests for logging in and navigating to Courseware page
     """
 
-    #DEMO_COURSE_USER = os.environ.get('USER_LOGIN_EMAIL')
-    #DEMO_COURSE_PASSWORD = os.environ.get('USER_LOGIN_PASSWORD')
-    DEMO_COURSE_USER = "staff@example.com"
-    DEMO_COURSE_PASSWORD = "edx"
+    DEMO_COURSE_USER = os.environ.get('USER_LOGIN_EMAIL')
+    DEMO_COURSE_PASSWORD = os.environ.get('USER_LOGIN_PASSWORD')
+    #DEMO_COURSE_USER = "staff@example.com"
+    #DEMO_COURSE_PASSWORD = "edx"
 
     def setUp(self):
         """
