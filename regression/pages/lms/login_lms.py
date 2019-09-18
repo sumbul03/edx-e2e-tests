@@ -46,14 +46,14 @@ class LmsLogin(LoginPage):
         self.q(css='.login-button').first.click()
 
         # The next page is the dashboard; make sure it loads
-        dashboard = DashboardPageExtended(self.browser)
-        
-        dashboard.wait_for_page(300)
+        #dashboard = DashboardPageExtended(self.browser)
+        time.sleep(60)
+        #dashboard.wait_for_page(300)
         #dashboard = 'http://edx.devstack.lms:18000/dashboard'
         dashtest = self.q(css='.my-courses').present
         print("Dashtest is " + dashtest)
-        #return self.q(css='.my-courses').present
-        return dashboard
+        return dashtest
+        #return dashboard
 
     def click_remember_me(self):
         """
