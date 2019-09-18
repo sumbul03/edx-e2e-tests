@@ -48,7 +48,7 @@ class LmsLogin(LoginPage):
         #dashboard = DashboardPage(self.browser)
         time.sleep(45)
         #dashboard.wait_for_page()
-        return self.q(css='#showAccomplishedCourses').visible
+        return self.q(css='.my-courses').present
         #return dashboard
 
     def click_remember_me(self):
