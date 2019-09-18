@@ -49,8 +49,9 @@ class LmsLogin(LoginPage):
         #dashboard = DashboardPageExtended(self.browser)
         time.sleep(60)
         #dashboard.wait_for_page(300)
-              
-        return self.q(css='.my-courses').visible
+        #dashtest = self.q(css='.js-login.login-button').visible       
+        #print ("Dashtest is" + str(dashtest))
+        return self.q(css='.js-login.login-button').visible
         #return dashboard
 
     def click_remember_me(self):
