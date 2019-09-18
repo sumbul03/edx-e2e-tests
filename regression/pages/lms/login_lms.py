@@ -45,10 +45,8 @@ class LmsLogin(LoginPage):
         """
         self.q(css='.js-login.login-button').first.click()
         time.sleep(60)
-        self.q(css='.js-login.login-button').first.click()
-        time.sleep(60)
-        dashtest1=self.q(css='.js-login.login-button').visible
-        print(dashtest1)
+        #dashtest1=self.q(css='.js-login.login-button').visible
+        #print(dashtest1)
         self.q(css='.js-login.login-button').first.click()
 
         # The next page is the dashboard; make sure it loads
