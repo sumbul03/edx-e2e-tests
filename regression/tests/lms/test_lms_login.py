@@ -36,7 +36,7 @@ class LoginTest(WebAppTest):
         self.login_page.login(self.DEMO_COURSE_USER, self.DEMO_COURSE_PASSWORD)
         time.sleep(45)
         all_co = self.login_page.q(
-                css='#my-courses').visible
+                css='#my-courses').present
         print(all_co)
 
         self.assertEqual(
