@@ -48,6 +48,8 @@ class LmsLogin(LoginPage):
         dashboard = DashboardPage(self.browser)
         #time.sleep(45)
         dashboard.wait_for_page(90)
+        dashboard = 'http://edx.devstack.lms:18000/dashboard'
+        
         #return self.q(css='.my-courses').present
         return dashboard
 
