@@ -32,11 +32,11 @@ class LoginTest(WebAppTest):
         Verifies that user can Log in as a staff
         """
         self.login_page.visit()
-        time.sleep(30)
+        time.sleep(45)
         self.login_page.login(self.DEMO_COURSE_USER, self.DEMO_COURSE_PASSWORD)
-        time.sleep(30)
+        time.sleep(45)
         all_co = self.login_page.q(
-                css='#showAllCourses').visible
+                css='#my-courses').visible
         print(all_co)
 
         self.assertEqual(
