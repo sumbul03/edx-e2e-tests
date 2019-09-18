@@ -35,17 +35,14 @@ class LoginTest(WebAppTest):
         time.sleep(30)
         self.login_page.login(self.DEMO_COURSE_USER, self.DEMO_COURSE_PASSWORD)
         time.sleep(30)
-        test_all_courses=self.login_page.q(css='#showAllCourses')
+        all_co = self.login_page.q(
+                css='#showAllCourses').visible
+        print(all_co)
 
-        all_courses=self.login_page.q(css='#showAllCourses')
-        first_course=all_courses.text[0]
         self.assertEqual(
-            
-                first_course.lower(),
-            'all',            
-            msg='User not logged in as expected.')
-
-
+            all_co,True,
+            msg='User not logged in as expected.') 
+        
     def atest_remember_me(self):
         """
         Verifies that user can use Remember Me functionality
