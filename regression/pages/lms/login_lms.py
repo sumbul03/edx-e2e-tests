@@ -48,7 +48,7 @@ class LmsLogin(LoginPage):
         # The next page is the dashboard; make sure it loads
         dashboard = DashboardPageExtended(self.browser)
         
-        dashboard.wait_for_page(90)
+        dashboard.wait_for_page(300)
         #dashboard = 'http://edx.devstack.lms:18000/dashboard'
         dashtest = self.q(css='.my-courses').present
         print("Dashtest is " + dashtest)
