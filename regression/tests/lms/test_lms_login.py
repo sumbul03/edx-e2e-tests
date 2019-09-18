@@ -32,12 +32,14 @@ class LoginTest(WebAppTest):
         Verifies that user can Log in as a staff
         """
         self.login_page.visit()
-        time.sleep(15)
+        time.sleep(60)
         self.login_page.login(self.DEMO_COURSE_USER, self.DEMO_COURSE_PASSWORD)
+        all_courses=self.login_page.q(css='#showAllCourses')
+        first_course=all_courses.text[0]
         self.assertEqual(
-            self.login_page.q(
-                css='.kt-portlet__head .header-courses').text[0].lower(),
-            'my courses',
+            
+                first_course.lower(),
+            'all',            
             msg='User not logged in as expected.')
 
 
