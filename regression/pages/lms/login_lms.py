@@ -43,15 +43,13 @@ class LmsLogin(LoginPage):
         """
         Submit registration info to create an account.
         """
-        self.q(css='.login-button').first.click()
-        print(self.q(css='.message-copy')[0].text)        
+        self.q(css='.login-button').first.click()     
 
         # The next page is the dashboard; make sure it loads
-        dashboard = DashboardPageExtended(self.browser)
+        #dashboard = DashboardPageExtended(self.browser)
         #time.sleep(45)
-        dashboard.wait_for_page()
+        #dashboard.wait_for_page()
         
-        print(self.q(css='.message-copy')[0].text)
         dashtest=self.q(css='#showAccomplishedCourses').visible
         print(dashtest)
 
