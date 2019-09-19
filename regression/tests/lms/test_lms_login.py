@@ -35,10 +35,7 @@ class LoginTest(WebAppTest):
         time.sleep(45)
         self.login_page.login(self.DEMO_COURSE_USER, self.DEMO_COURSE_PASSWORD)
         time.sleep(45)
-                
-        self.dashboard_ext.visit()
-        time.sleep(90)
-        
+    
         all_co = self.login_page.q(
                 css='.my-courses').present
         print(all_co)
