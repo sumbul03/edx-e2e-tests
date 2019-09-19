@@ -28,8 +28,7 @@ class LmsLogin(LoginPage):
         """
         email_selector = 'input#login-email'
         password_selector = 'input#login-password'
-        
-        time.sleep(30)
+
         self.wait_for_element_visibility(
             email_selector, 'Email input area present')
         self.wait_for_element_visibility(
@@ -39,23 +38,24 @@ class LmsLogin(LoginPage):
         self.q(css=password_selector).fill(password)
         self.wait_for_ajax()
 
+   
     def submit(self):
         """
         Submit registration info to create an account.
         """
-        self.q(css='.js-login.login-button').first.click()
-        time.sleep(60)
-        #dashtest1=self.q(css='.js-login.login-button').visible
-        #print(dashtest1)
-        self.q(css='.js-login.login-button').first.click()
+        self.q(css='.login-button').first.click()
+        print(self.q(css='.message-copy')[0].text)        
 
         # The next page is the dashboard; make sure it loads
-        #dashboard = DashboardPageExtended(self.browser)
-        #time.sleep(60)
-        #dashboard.wait_for_page(90)
+        dashboard = DashboardPageExtended(self.browser)
+        #time.sleep(45)
+        dashboard.wait_for_page()
         
+        print(self.q(css='.message-copy')[0].text)
+        dashtest=self.q(css='#showAccomplishedCourses').visible
+        print(dashtest)
+
         return "http://edx.devstack.lms:18000/dashboard"
-        #return dashboard
 
     def click_remember_me(self):
         """
