@@ -50,7 +50,7 @@ class LmsLogin(LoginPage):
         time.sleep(100)
         #dashboard.wait_for_page()
         
-        dashtest=self.q(css='#showAccomplishedCourses').visible
+        dashtest=self.q(css='#my-courses').visible
         print(dashtest)
 
         return "http://edx.devstack.lms:18000/dashboard"
