@@ -35,17 +35,14 @@ class LoginTest(WebAppTest):
         time.sleep(45)
         self.login_page.login(self.DEMO_COURSE_USER, self.DEMO_COURSE_PASSWORD)
         time.sleep(45)
-        testlog = self.login_page.q(
-                css='.js-login.login-button').present
-        print(testlog)
-        
+                
         self.dashboard_ext.visit()
-        time.sleep(60)
-        all_co = self.dashboard_ext.q(
+        time.sleep(90)
+        
+        all_co = self.login_page.q(
                 css='.my-courses').present
         print(all_co)
         
-
         self.assertEqual(
             all_co,True,
             msg='User not logged in as expected.') 
