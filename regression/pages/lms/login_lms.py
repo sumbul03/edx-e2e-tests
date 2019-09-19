@@ -44,10 +44,10 @@ class LmsLogin(LoginPage):
         Submit registration info to create an account.
         """
         self.q(css='.login-button').first.click()     
-
+       
         # The next page is the dashboard; make sure it loads
         #dashboard = DashboardPageExtended(self.browser)
-        #time.sleep(45)
+        time.sleep(100)
         #dashboard.wait_for_page()
         
         dashtest=self.q(css='#showAccomplishedCourses').visible
