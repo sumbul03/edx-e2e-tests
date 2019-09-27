@@ -13,32 +13,18 @@ class DashboardPageExtended(DashboardPage):
     """
     url = 'http://edx.devstack.lms:18000' + '/dashboard'
 
-    def select_course(self, course_title):
+    def is_browser_on_page(self):
         """
-        Selects the course we want to perform tests on
+        Verifies if the browser is on the correct page
         """
-        course_names = self.q(css='.course-title a')
-        for vals in course_names:
-            if course_title in vals.text:
-                vals.click()
-                return
-        raise BrokenPromise('Course title not found')
+        return self.q(css='#my-courses').visible
 
-    def click_donate_button(self):
-        """
-        Clicks donate button on Dashboard
-        """
-        self.wait_for_element_visibility(
-            '.action-donate', 'Donate button visibility'
-        )
-        self.q(css='.action-donate').click()
+   
 
-    def logout_lms(self):
-        """
-        Clicks Drop down then SignOut button
-        """
-        self.q(css='.dropdown').click()
-        self.wait_for_element_visibility(
-            '.item a[href="/logout"]', 'SignOut button'
-        )
-        self.q(css='.item a[href="/logout"]').click()
+class StartCourse(DashboardPage):
+
+    url = 'http://edx.devstack.lms:18000' + '/courses' + '/course-v1:edX+DemoX+Demo_Course' + '/course/' 
+
+    def is_browser_on_page(self):
+        return self.q(css='h3.kt-portlet__head-titles').present 
+
