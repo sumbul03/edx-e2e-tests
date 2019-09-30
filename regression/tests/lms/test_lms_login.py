@@ -67,9 +67,6 @@ class LoginTest(WebAppTest):
         """
         Perform a general validation of the course listings section
         """
-        #self.login_page.visit()
-        
-        #self.login_page.login(self.DEMO_COURSE_USER, self.DEMO_COURSE_PASSWORD)
         
         self.dashboard_ext.visit()
         course_listings = self.dashboard_ext.get_course_listings()
@@ -110,15 +107,15 @@ class LoginTest(WebAppTest):
             True,
             msg='User not on Courseware Page.')
    
-    def atest_user_on_courseware_page(self):
+    def test_user_on_courseware_page(self):
         """
-        View the Demo Courseware Page
+        Check if there is a side header with subsections
         """
         self.dashboard_ext.q(css='.btn-label-brand.btn.btn-wide.btn-bold').first.click()
         
         self.start_course.q(css='.btn.btn-primary.action-resume-course').first.click()
         
-        return self.courseware_page.q(css='.sequence-list').present
+        return self.start_course.q(css='.kt-menu__subnav .kt-menu__item').present
 
     def test_logout(self):
         """
