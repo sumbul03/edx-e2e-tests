@@ -81,17 +81,15 @@ class LoginTest(WebAppTest):
         """
         self.dashboard_ext.q(css='.btn-label-brand.btn.btn-wide.btn-bold').first.click()
         check = self.dashboard_ext.q(
-                css='h3.kt-portlet__head-title').visible
+                css='.kt-portlet__head-label').visible
         print(check)
         self.assertEqual(
             check,
             True,
             msg='User not on Course Page.')
-        
-        self.start_course.q(css='.btn.btn-primary.action-resume-course').click()
-        print('TEST')
+               
          
-    def atest_start_course(self):
+    def test_start_course(self):
         """
         Start the Demo Course
         """
@@ -99,13 +97,7 @@ class LoginTest(WebAppTest):
         
         self.start_course.q(css='.btn.btn-primary.action-resume-course').first.click()
 
-        stc = self.start_course.q(
-                css='#sequence-list').visible
-              
-        self.assertEqual(
-            stc,
-            True,
-            msg='User not on Courseware Page.')
+        return self.start_course.q(css='.courseware').present
    
     def test_user_on_courseware_page(self):
         """
